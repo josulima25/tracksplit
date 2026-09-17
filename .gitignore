@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.venv-demucs
 /.pnp
 .pnp.*
 .yarn/*
@@ -19,6 +20,8 @@
 
 # production
 /build
+/public/generated
+/public/stems/*.mp3
 
 # misc
 .DS_Store

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "description": "Four independently separated, licensed MP3 stems used by the Demucs-compatible mixer.",
+  "stems": {
+    "vocals": "/stems/vocals.mp3",
+    "drums": "/stems/drums.mp3",
+    "bass": "/stems/bass.mp3",
+    "other": "/stems/other.mp3"
+  }
+}
