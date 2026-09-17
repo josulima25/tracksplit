@@ -7,7 +7,7 @@ import { Client } from "@gradio/client";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-export const maxDuration = 600;
+export const maxDuration = 300;
 
 const execFileAsync = promisify(execFile);
 
