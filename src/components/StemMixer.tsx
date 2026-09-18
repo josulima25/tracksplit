@@ -150,7 +150,9 @@ export function StemMixer({ sessionName = "Midnight Session", uploadedAudioUrl =
     audioContextRef.current = audioContext;
     pannersRef.current = [];
     tracksRef.current = activeStems.map((stem, index) => {
-      const audio = new Audio(stem.audioUrl);
+      const audio = document.createElement("audio");
+      audio.crossOrigin = "anonymous";
+      audio.src = stem.audioUrl;
       audio.preload = "auto";
       audio.loop = true;
       audio.volume = isAudible(index) ? (volumes[index] ?? 78) / 100 : 0;
@@ -212,7 +214,7 @@ export function StemMixer({ sessionName = "Midnight Session", uploadedAudioUrl =
       const results = await Promise.allSettled(tracks.map((audio) => audio.play()));
       const failed = results.filter((result) => result.status === "rejected");
       failed.forEach((result) => console.error("[TrackSplit] Stem playback rejected", result.reason));
-      if (failed.length === tracks.length) throw new Error("No audio track could be played");
+      if (failed.length === tracks.length) throw new Error("Nenhum stem pôde ser reproduzido. Verifique o acesso aos arquivos do Hugging Face.");
       setAudioError(false);
       setPlaying(true);
     } catch (error) {
