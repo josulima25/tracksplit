@@ -45,6 +45,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ stems: Object.fromEntries(remoteStems) });
     }
 
+    if (process.env.VERCEL) {
+      return NextResponse.json(
+        { error: "HF_SPACE_ID não está configurado na Vercel." },
+        { status: 503 },
+      );
+    }
+
     const inputExtension = path.extname(file.name).toLowerCase() || ".audio";
     const trimStart = Number(formData.get("trimStart") || 0);
     const trimEnd = Number(formData.get("trimEnd") || 0);
